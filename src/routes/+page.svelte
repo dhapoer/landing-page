@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { profile, experience, projects, skills } from '$lib/data';
+	import { profile, experience, projects, skills, education, awards } from '$lib/data';
 
 	let open = $state(false);
 </script>
@@ -33,6 +33,7 @@
 			<a href="#about" onclick={() => (open = false)}>About</a>
 			<a href="#experience" onclick={() => (open = false)}>Experience</a>
 			<a href="#work" onclick={() => (open = false)}>Work</a>
+			<a href="#education" onclick={() => (open = false)}>Education</a>
 			<a href="#contact" onclick={() => (open = false)}>Contact</a>
 		</div>
 	</nav>
@@ -108,6 +109,30 @@
 					</div>
 				{/each}
 			</div>
+		</div>
+	</section>
+
+	<!-- Education -->
+	<section id="education">
+		<div class="wrap">
+			<h2>Education</h2>
+			{#each education as e}
+				<div class="item">
+					<div class="item-head">
+						<h3>{e.degree}</h3>
+						<span class="muted">{e.period}</span>
+					</div>
+					<p class="muted">{e.school}</p>
+				</div>
+			{/each}
+
+			<h2 class="awards-head">Awards</h2>
+			{#each awards as a}
+				<div class="item">
+					<h3>{a.name}</h3>
+					<p class="muted">{a.detail}</p>
+				</div>
+			{/each}
 		</div>
 	</section>
 
@@ -193,6 +218,7 @@
 	}
 
 	h2 { font-size: 1.6rem; margin: 0 0 1.25rem; }
+	.awards-head { margin-top: 2.5rem; }
 
 	.item { padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
 	.item-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }

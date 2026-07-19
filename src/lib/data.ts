@@ -50,7 +50,46 @@ export const experience = [
 		period: 'Jan 2020 — Oct 2021',
 		summary:
 			'Led the rewrite from React Native to native Swift/MVVM, then shipped Mutual Fund, Stock, and Community features. Code review and close work with product and UI/UX.'
+	},
+	{
+		company: 'HipCar',
+		title: 'Software Engineer',
+		period: 'Jan 2017 — Dec 2019',
+		summary:
+			'Built Artemis (React.js mobile backend), the main and partner landing pages (Node.js, Vue.js), and the iOS app in Swift. Managed database and servers, and set up CI/CD with CircleCI.'
+	},
+	{
+		company: 'Bina Nusantara University',
+		title: 'System Analyst',
+		period: 'Jul 2014 — Jan 2017',
+		summary:
+			'Progressed from Junior Programmer to System Analyst. Shipped Binus Online Learning 1.0 and 2.0, BinusMaya 2.0 and 5.0, binusian.org, and the Job Expo and paper repository sites.'
+	},
+	{
+		company: 'Bina Nusantara University',
+		title: 'Oracle Team',
+		period: 'Sep 2013 — Jun 2014',
+		summary:
+			'ETL and data conversion from legacy systems, reporting, and custom pages on Oracle Campus Solution.'
 	}
+];
+
+export const education = [
+	{
+		school: 'Universitas Bina Nusantara (Binus)',
+		degree: 'Binus Graduate Program, Computer Science',
+		period: '2016 — 2018'
+	},
+	{
+		school: 'Universitas Bina Nusantara (Binus)',
+		degree: 'BSc Computer Science',
+		period: '2012 — 2016'
+	}
+];
+
+export const awards = [
+	{ name: 'Best Graduate Award', detail: 'Summa Cum Laude · Bina Nusantara University, 2016' },
+	{ name: 'Binusian Award of Excellence', detail: 'Bina Nusantara University, 2016' }
 ];
 
 export const projects = [
