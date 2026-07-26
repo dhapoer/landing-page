@@ -1,0 +1,60 @@
+/* Hallmark · custom theme · vibe: "brutalist · black slab · burgundy stabs"
+ * paper oklch(15% 0.02 20) · accent oklch(52% 0.16 18) burgundy (warm)
+ * axes: dark / brutalist-bold-grotesque / warm · display Bricolage Grotesque + body IBM Plex Sans
+ * Portable token system. Import this before page styles.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+	color-scheme: dark;
+
+	/* Type */
+	--font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+	--font-body: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+	/* Colour — near-black paper, warm off-white ink, burgundy accent */
+	--color-paper: oklch(15% 0.02 20);
+	--color-paper-2: oklch(19% 0.02 20);
+	--color-rule: oklch(38% 0.02 20);
+	--color-muted: oklch(66% 0.015 40);
+	--color-neutral: oklch(80% 0.012 50);
+	--color-ink: oklch(94% 0.008 60);
+	--color-accent: oklch(58% 0.16 18); /* burgundy, lifted for dark per recipe */
+	--color-accent-ink: oklch(96% 0.01 60); /* text ON the accent block */
+	--color-focus: oklch(64% 0.17 18);
+
+	/* Scale — 1.333 perfect fourth, heavier for brutalist display */
+	--text-xs: 0.75rem;
+	--text-sm: 0.9rem;
+	--text-base: 1rem;
+	--text-md: 1.2rem;
+	--text-lg: 1.6rem;
+	--text-xl: 2.1rem;
+	--text-2xl: 3rem;
+	--text-display: clamp(3rem, 9vw, 6rem);
+	--text-display-s: clamp(2.2rem, 6vw, 3.5rem);
+
+	/* Spacing — 4pt scale */
+	--space-2xs: 0.25rem;
+	--space-xs: 0.5rem;
+	--space-sm: 0.75rem;
+	--space-md: 1rem;
+	--space-lg: 1.5rem;
+	--space-xl: 2.5rem;
+	--space-2xl: 4rem;
+	--space-3xl: 6rem;
+
+	/* Measure + gutter */
+	--measure: 68ch;
+	--page-gutter: clamp(1.25rem, 5vw, 2.5rem);
+
+	/* Rules — brutalist: heavy, squared, no radius */
+	--rule-hair: 1px;
+	--rule-slab: 2px;
+	--rule-heavy: 3px;
+	--radius: 0;
+	--dur-fast: 120ms;
+	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
