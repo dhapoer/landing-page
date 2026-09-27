@@ -9,6 +9,8 @@ type Pos = { x: number; y: number };
 export const SHEET_QUERY = '(max-width: 899px)';
 
 export class Desktop {
+	/** 'project' on /work/<slug>: the project's name is the page heading. */
+	page: 'home' | 'project' = 'home';
 	open = $state<Record<WinId, boolean>>({ about: true, work: false, record: true, contact: false });
 	// null = still at its CSS default spot; set once the window is dragged.
 	pos = $state<Record<WinId, Pos | null>>({ about: null, work: null, record: null, contact: null });
@@ -19,6 +21,14 @@ export class Desktop {
 	focusRequest = $state<WinId | null>(null);
 
 	front = $derived(this.order.at(-1) ?? null);
+
+	constructor(project?: number) {
+		if (project === undefined) return;
+		this.page = 'project';
+		this.project = project;
+		this.open.work = true;
+		this.order = ['record', 'about', 'work'];
+	}
 
 	z(id: WinId) {
 		return 10 + Math.max(0, this.order.indexOf(id));
@@ -56,10 +66,13 @@ export class Desktop {
 		}
 	}
 
-	get hash() {
+	// Address for the current view: /work/<slug> for a project, / otherwise
+	// (with #record or #contact when one of those is in front).
+	get url() {
 		const id = this.front;
-		if (!id) return '';
-		return id === 'work' ? `#work/${projects[this.project].slug}` : `#${id}`;
+		if (id === 'work') return `/work/${projects[this.project].slug}`;
+		if (id === 'record' || id === 'contact') return `/#${id}`;
+		return '/';
 	}
 
 	// #about, #record, #contact, #work, #work/<slug>
@@ -76,8 +89,8 @@ export class Desktop {
 
 const KEY = Symbol('desktop');
 
-export function setDesktop() {
-	return setContext(KEY, new Desktop());
+export function setDesktop(project?: number) {
+	return setContext(KEY, new Desktop(project));
 }
 
 export function getDesktop() {

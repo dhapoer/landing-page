@@ -1,4 +1,4 @@
-import { education, experience, profile, skills } from '$lib/data';
+import { education, experience, profile, projects, skills, type Project } from '$lib/data';
 
 // Production origin. Canonical URLs, Open Graph and the sitemap all point here,
 // so the pages.dev copies never compete with it.
@@ -13,7 +13,7 @@ export const home = {
 };
 
 // Every indexable path. The sitemap is built from this list.
-export const pages = ['/'];
+export const pages = ['/', ...projects.map((p) => `/work/${p.slug}`)];
 
 export const absolute = (path: string) => new URL(path, SITE_URL).href;
 
@@ -65,6 +65,35 @@ export function homeLd() {
 				description: home.description,
 				isPartOf: { '@id': absolute('/#website') },
 				mainEntity: { '@id': personId }
+			},
+			personLd()
+		]
+	};
+}
+
+export function projectLd(p: Project) {
+	const url = absolute(`/work/${p.slug}`);
+	return {
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': p.device === 'paper' ? 'ScholarlyArticle' : 'CreativeWork',
+				'@id': `${url}#work`,
+				url,
+				name: p.seo.title,
+				headline: p.name,
+				description: p.seo.description,
+				genre: p.kind,
+				keywords: p.stack.join(', '),
+				author: { '@id': personId },
+				...(p.link ? { sameAs: p.link } : {})
+			},
+			{
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{ '@type': 'ListItem', position: 1, name: 'Home', item: absolute('/') },
+					{ '@type': 'ListItem', position: 2, name: p.name, item: url }
+				]
 			},
 			personLd()
 		]
