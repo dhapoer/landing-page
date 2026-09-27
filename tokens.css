@@ -1,60 +1,74 @@
-/* Hallmark · custom theme · vibe: "brutalist · black slab · burgundy stabs"
- * paper oklch(15% 0.02 20) · accent oklch(52% 0.16 18) burgundy (warm)
- * axes: dark / brutalist-bold-grotesque / warm · display Bricolage Grotesque + body IBM Plex Sans
+/* Desktop OS · dark mac minimalism
+ * near-black desktop, frosted graphite windows, one blue accent.
  * Portable token system. Import this before page styles.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
 
 :root {
 	color-scheme: dark;
 
-	/* Type */
-	--font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
-	--font-body: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
-	--font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+	/* Type — the Mac's own face where it exists, Geist elsewhere */
+	--font-sans: -apple-system, BlinkMacSystemFont, 'Geist', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'Geist Mono', ui-monospace, 'SF Mono', monospace;
 
-	/* Colour — near-black paper, warm off-white ink, burgundy accent */
-	--color-paper: oklch(15% 0.02 20);
-	--color-paper-2: oklch(19% 0.02 20);
-	--color-rule: oklch(38% 0.02 20);
-	--color-muted: oklch(66% 0.015 40);
-	--color-neutral: oklch(80% 0.012 50);
-	--color-ink: oklch(94% 0.008 60);
-	--color-accent: oklch(58% 0.16 18); /* burgundy, lifted for dark per recipe */
-	--color-accent-ink: oklch(96% 0.01 60); /* text ON the accent block */
-	--color-focus: oklch(64% 0.17 18);
+	/* Colour */
+	--color-desktop: #0e0e10;
+	--color-glow: #1d2230;
+	--color-window: rgb(28 28 30 / 0.86);
+	--color-window-solid: #1c1c1e;
+	--color-chrome: rgb(30 30 32 / 0.6);
+	--color-dock: rgb(40 40 44 / 0.6);
+	--color-tile: #2c2c2e;
+	--color-fill: rgb(255 255 255 / 0.06);
+	--color-fill-strong: rgb(255 255 255 / 0.12);
+	--color-hair: rgb(255 255 255 / 0.08);
+	--color-text: #f5f5f7;
+	--color-text-2: #c7c7cc;
+	--color-muted: #a1a1a6;
+	--color-faint: #8e8e93;
+	--color-inactive: #4a4a4e;
+	--color-accent: #0a84ff; /* text + icons on dark */
+	--color-accent-fill: #0071e3; /* fills under white text (4.7:1) */
+	--color-live: #30d158;
+	--color-close: #ff5f57;
+	--color-min: #febc2e;
+	--color-zoom: #28c840;
 
-	/* Scale — 1.333 perfect fourth, heavier for brutalist display */
+	/* Scale */
 	--text-xs: 0.75rem;
-	--text-sm: 0.9rem;
-	--text-base: 1rem;
-	--text-md: 1.2rem;
-	--text-lg: 1.6rem;
-	--text-xl: 2.1rem;
-	--text-2xl: 3rem;
-	--text-display: clamp(3rem, 9vw, 6rem);
-	--text-display-s: clamp(2.2rem, 6vw, 3.5rem);
+	--text-sm: 0.8125rem;
+	--text-base: 0.9375rem;
+	--text-md: 1.0625rem;
+	--text-lg: 1.5rem;
+	--text-xl: 2rem;
+	--text-display: clamp(2.5rem, 4.6vw, 4.5rem);
 
-	/* Spacing — 4pt scale */
+	/* Spacing */
 	--space-2xs: 0.25rem;
 	--space-xs: 0.5rem;
 	--space-sm: 0.75rem;
 	--space-md: 1rem;
 	--space-lg: 1.5rem;
-	--space-xl: 2.5rem;
-	--space-2xl: 4rem;
-	--space-3xl: 6rem;
+	--space-xl: 2rem;
+	--space-2xl: 3rem;
 
-	/* Measure + gutter */
-	--measure: 68ch;
-	--page-gutter: clamp(1.25rem, 5vw, 2.5rem);
+	/* Shape + depth */
+	--radius-sm: 6px;
+	--radius-md: 10px;
+	--radius-lg: 14px;
+	--radius-xl: 20px;
+	--shadow-front: 0 40px 100px rgb(0 0 0 / 0.7);
+	--shadow-back: 0 20px 50px rgb(0 0 0 / 0.45);
+	--blur: blur(30px);
 
-	/* Rules — brutalist: heavy, squared, no radius */
-	--rule-hair: 1px;
-	--rule-slab: 2px;
-	--rule-heavy: 3px;
-	--radius: 0;
-	--dur-fast: 120ms;
+	/* Chrome sizes */
+	--menubar-h: 32px;
+	--titlebar-h: 40px;
+	--dock-space: 96px;
+
+	/* Motion */
+	--dur-fast: 150ms;
+	--dur: 280ms;
 	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
