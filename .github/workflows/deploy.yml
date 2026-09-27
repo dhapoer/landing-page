@@ -1,12 +1,38 @@
 name: Deploy
 
+# Branch flow: feature/* | fix/* → development (preview) → main (production).
+# hotfix/* may go straight to main for urgent fixes.
 on:
   push:
-    branches: [main]
+    branches: [main, development]
   pull_request:
-    branches: [main]
+    branches: [main, development]
 
 jobs:
+  # Fails PRs that skip a step of the flow. Require this check in branch protection.
+  branch-guard:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check source branch
+        env:
+          BASE: ${{ github.base_ref }}
+          HEAD: ${{ github.head_ref }}
+        run: |
+          case "$BASE" in
+            main)
+              case "$HEAD" in
+                development|hotfix/*) ;;
+                *) echo "::error::PRs into main must come from development or hotfix/* (got '$HEAD')."; exit 1 ;;
+              esac ;;
+            development)
+              case "$HEAD" in
+                feature/*|fix/*|hotfix/*|main) ;;
+                *) echo "::error::PRs into development must come from feature/*, fix/* or hotfix/* (got '$HEAD')."; exit 1 ;;
+              esac ;;
+          esac
+          echo "$HEAD → $BASE is allowed."
+
   build-deploy:
     runs-on: ubuntu-latest
     permissions:
@@ -29,11 +55,12 @@ jobs:
 
       - run: pnpm run build
 
-      # Deploy only on push to main (skips PRs)
+      # Pushes deploy; PRs only run the gate above.
+      # main → production (dhapoer.xyz); development → preview (development.<project>.pages.dev)
       - name: Deploy to Cloudflare Pages
         if: github.event_name == 'push'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy .svelte-kit/cloudflare --project-name=landing-page
+          command: pages deploy .svelte-kit/cloudflare --project-name=landing-page --branch=${{ github.ref_name }}

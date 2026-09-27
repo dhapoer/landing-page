@@ -30,9 +30,25 @@ pnpm preview # serves the built output
 
 > `pnpm preview` serves a **snapshot** of the last build — it does not pick up rebuilds. After `pnpm build`, restart it or you'll be testing stale output.
 
+## Branching
+
+```
+feature/<name> ─┐
+fix/<name>     ─┴─► PR into development ──► preview
+development ──────► PR into main ─────────► production
+hotfix/<name> ────► PR into main (urgent only), then merge main back into development
+```
+
+- Cut `feature/*` and `fix/*` from `development`; open the PR against `development`.
+- Release by opening a PR from `development` into `main`.
+- The `branch-guard` check fails any PR that skips a step. To enforce it, protect `main` and `development` in **Settings → Branches**: require a pull request and require the `branch-guard` and `build-deploy` checks.
+
 ## Deploy
 
-Push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml): install → typecheck → build → deploy. PRs run the gate but skip the deploy step.
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs install → typecheck → build on every push and PR to `main` or `development`. PRs stop there; pushes also deploy:
+
+- `main` → production ([dhapoer.xyz](https://dhapoer.xyz))
+- `development` → preview at `development.landing-page-aeb.pages.dev`
 
 Setup is complete; the notes below are for rebuilding from scratch.
 
