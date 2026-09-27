@@ -4,7 +4,7 @@ export const profile = {
 	name: 'Abimanyu Dharma Poernomo',
 	role: 'Full Stack Engineer',
 	tagline: 'Full stack and mobile engineer. Fintech, crypto, and the occasional lecture hall.',
-	location: 'Jakarta, Indonesia',
+	location: 'Bali, Indonesia',
 	email: 'hello@dhapoer.xyz',
 	availability: 'Available for freelance',
 	bio: [
