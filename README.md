@@ -8,7 +8,10 @@ Personal portfolio built with **SvelteKit + TypeScript**, deployed to **Cloudfla
 
 All copy lives in one file: [`src/lib/data.ts`](src/lib/data.ts) — profile, bio, experience, projects, skills, education, awards. Edit it; no markup changes needed.
 
-Adding a new section means editing [`src/routes/+page.svelte`](src/routes/+page.svelte): add the `<section id="...">`, and a matching link in the nav.
+The site is a dark "desktop OS": draggable windows (About, Work, Record, Contact), a Dock, and a folder per project. Under 900px wide each window opens as a full-screen sheet instead. The pieces live in [`src/lib/desktop/`](src/lib/desktop/); window state (open, position, stacking) is in `desktop.svelte.ts`.
+
+- **Project screenshots:** put the image in `static/work/` and set that project's `image` in `data.ts` (e.g. `'/work/ajaib.webp'`). Without one, the phone/browser frame shows a placeholder.
+- **Deep links:** `#about`, `#record`, `#contact`, `#work`, `#work/<slug>` (e.g. `/#work/indodax`) open that window on load.
 
 ## Develop
 
@@ -55,4 +58,4 @@ Setup is complete; the notes below are for rebuilding from scratch.
 - **Adapter config lives in [`vite.config.ts`](vite.config.ts)**, not `svelte.config.js`. Adding a `svelte.config.js` is ignored and logs a warning.
 - **Email is auto-obfuscated.** Cloudflare rewrites `mailto:` to `/cdn-cgi/l/email-protection`; it renders normally in a browser but looks scrambled in `curl`.
 - **`Profile.pdf` is gitignored** — the LinkedIn resume export contains a phone number.
-- Mobile nav collapses to a hamburger under 600px (Escape and link-click both close it).
+- Escape closes the front window.
