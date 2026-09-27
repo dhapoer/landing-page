@@ -3,9 +3,15 @@
 	import { getDesktop } from './desktop.svelte';
 	import Preview from './Preview.svelte';
 	import Window from './Window.svelte';
+	import { inPlace } from './nav';
 
 	const desk = getDesktop();
 	const p = $derived(projects[desk.project]);
+	const n = projects.length;
+	const prev = $derived(projects[(desk.project - 1 + n) % n]);
+	const next = $derived(projects[(desk.project + 1) % n]);
+	// On /work/<slug> the project name is the page's main heading.
+	const heading = $derived(desk.page === 'project' ? 'h1' : 'h3');
 </script>
 
 <Window id="work" title="Work" subtitle={p.name} width="min(900px, 68vw)" left="clamp(24px, 16vw, 260px)" top="calc(var(--menubar-h) + 9vh)">
@@ -15,12 +21,17 @@
 			<ul>
 				{#each projects as item, i (item.slug)}
 					<li>
-						<button class="side-item" aria-current={desk.project === i ? 'true' : undefined} onclick={() => (desk.project = i)}>
+						<a
+							class="side-item"
+							href="/work/{item.slug}"
+							aria-current={desk.project === i ? 'page' : undefined}
+							onclick={inPlace(() => (desk.project = i))}
+						>
 							<svg width="16" height="13" viewBox="0 0 54 42" aria-hidden="true">
 								<path d="M1 6a4 4 0 0 1 4-4h13l5 5h26a4 4 0 0 1 4 4v26a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4Z" fill="var(--color-accent)" />
 							</svg>
 							{item.name}
-						</button>
+						</a>
 					</li>
 				{/each}
 			</ul>
@@ -31,7 +42,7 @@
 				<Preview project={p} />
 				<div class="info">
 					<p class="kind">{p.kind}</p>
-					<h3>{p.name}</h3>
+					<svelte:element this={heading} class="name">{p.name}</svelte:element>
 					<p class="meta">{p.role} · {p.period}</p>
 					<p class="summary">{p.summary}</p>
 					{#if p.stats.length}
@@ -57,9 +68,9 @@
 		{/key}
 	</div>
 	<div class="pager">
-		<button onclick={() => desk.showProject(desk.project - 1, false)}>← Previous</button>
-		<span class="count">{desk.project + 1} of {projects.length}</span>
-		<button onclick={() => desk.showProject(desk.project + 1, false)}>Next →</button>
+		<a href="/work/{prev.slug}" onclick={inPlace(() => desk.showProject(desk.project - 1, false))}>← {prev.name}</a>
+		<span class="count">{desk.project + 1} of {n}</span>
+		<a href="/work/{next.slug}" onclick={inPlace(() => desk.showProject(desk.project + 1, false))}>{next.name} →</a>
 	</div>
 </Window>
 
@@ -77,6 +88,9 @@
 	.side ul { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; list-style: none; }
 	.side-item {
 		width: 100%;
+		color: var(--color-text);
+		text-decoration: none;
+		cursor: default;
 		display: flex;
 		align-items: center;
 		gap: 8px;
@@ -88,7 +102,7 @@
 		text-align: left;
 	}
 	.side-item:hover { background: var(--color-fill); }
-	.side-item[aria-current='true'] { background: var(--color-fill-strong); }
+	.side-item[aria-current='page'] { background: var(--color-fill-strong); }
 
 	.detail {
 		flex: 1;
@@ -101,7 +115,7 @@
 	}
 	.info { display: flex; flex-direction: column; gap: 12px; }
 	.kind { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-accent); }
-	h3 { font-size: var(--text-xl); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; }
+	.name { font-size: var(--text-xl); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; }
 	.meta { font-size: var(--text-sm); color: var(--color-muted); }
 	.summary { font-size: var(--text-base); line-height: 1.55; color: var(--color-text-2); }
 
@@ -155,7 +169,12 @@
 		padding: 10px 14px;
 		border-top: 1px solid var(--color-fill);
 	}
-	.pager button {
+	.pager a {
+		display: inline-flex;
+		align-items: center;
+		color: var(--color-text);
+		text-decoration: none;
+		cursor: default;
 		min-height: 32px;
 		padding: 0 12px;
 		border: 0;
@@ -163,7 +182,7 @@
 		background: var(--color-fill);
 		font-size: var(--text-sm);
 	}
-	.pager button:hover { background: var(--color-fill-strong); }
+	.pager a:hover { background: var(--color-fill-strong); }
 	.count { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-faint); }
 
 	@keyframes swap {

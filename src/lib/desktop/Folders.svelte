@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { projects } from '$lib/data';
 	import { getDesktop } from './desktop.svelte';
+	import { inPlace } from './nav';
 
 	const desk = getDesktop();
 </script>
@@ -8,10 +9,11 @@
 <ul class="folders" aria-label="Projects">
 	{#each projects as p, i (p.slug)}
 		<li>
-			<button
+			<a
 				class="folder"
 				class:selected={desk.open.work && desk.project === i}
-				onclick={() => desk.showProject(i)}
+				href="/work/{p.slug}"
+				onclick={inPlace(() => desk.showProject(i))}
 			>
 				<svg width="54" height="42" viewBox="0 0 54 42" aria-hidden="true">
 					<path
@@ -22,7 +24,7 @@
 					<path d="M1 13h52v24a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4Z" fill="var(--color-accent)" />
 				</svg>
 				<span class="name">{p.name}</span>
-			</button>
+			</a>
 		</li>
 	{/each}
 </ul>
@@ -49,8 +51,11 @@
 		border: 0;
 		border-radius: 8px;
 		background: transparent;
+		color: var(--color-text);
 		font-size: var(--text-xs);
 		text-align: center;
+		text-decoration: none;
+		cursor: default;
 	}
 	.folder:hover { background: var(--color-fill); }
 	.name { padding: 1px 6px; border-radius: 4px; }

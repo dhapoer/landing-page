@@ -4,12 +4,16 @@
 	import Window from './Window.svelte';
 
 	const desk = getDesktop();
+	// The headline is the home page's h1; on project pages the project name is.
+	const heading = desk.page === 'home' ? 'h1' : 'p';
 </script>
 
 <Window id="about" title="About" width="min(760px, 56vw)" left="clamp(24px, 6vw, 96px)" top="calc(var(--menubar-h) + 5vh)">
 	<div class="about">
 		<p class="kicker">{profile.name} · {profile.role}</p>
-		<h1>I build software people trade <span class="accent">real money</span> on.</h1>
+		<svelte:element this={heading} class="headline">
+			I build software people trade <span class="accent">real money</span> on.
+		</svelte:element>
 		<p class="tagline">{profile.tagline}</p>
 		<div class="actions">
 			<button class="btn primary" onclick={() => desk.show('contact')}>Start a project</button>
@@ -30,7 +34,7 @@
 		padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 52px);
 	}
 	.kicker { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-muted); }
-	h1 {
+	.headline {
 		font-size: var(--text-display);
 		font-weight: 600;
 		line-height: 1;
@@ -64,6 +68,6 @@
 	.off { color: var(--color-faint); }
 
 	@container (max-width: 520px) {
-		h1 { font-size: 2.5rem; }
+		.headline { font-size: 2.5rem; }
 	}
 </style>
