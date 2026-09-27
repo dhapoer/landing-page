@@ -5,12 +5,14 @@ export const profile = {
 	role: 'Full Stack Engineer',
 	tagline: 'Full stack and mobile engineer. Fintech, crypto, and the occasional lecture hall.',
 	location: 'Jakarta, Indonesia',
-	email: 'abimanyudharmapoernomo@gmail.com',
+	email: 'hello@dhapoer.xyz',
+	availability: 'Available for freelance',
 	bio: [
-		'Full stack engineer with a decade across mobile and web — iOS at Ajaib and INDODAX, full stack at Cyan, and now independent work through Dhapoer Digital.',
+		'Full stack engineer with a decade across mobile and web — iOS at Ajaib and INDODAX, full stack at Cyan and HipCar, and now independent work through Dhapoer Digital.',
 		'I like problems where the engineering is load-bearing: rewriting a React Native app to native Swift, shipping features people trade real money on, keeping systems boring enough to sleep through. I also teach web development part-time at RevoU.'
 	],
 	interests: ['Learning', 'Coffee', 'Motorcycle', 'Watches'],
+	languages: ['English', 'Bahasa Indonesia'],
 	socials: [
 		{ label: 'GitHub', href: 'https://github.com/dhapoer' },
 		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/dhapoer/' }
@@ -22,112 +24,235 @@ export const experience = [
 		company: 'Dhapoer Digital',
 		title: 'Full Stack Engineer',
 		period: 'Jul 2023 — Present',
+		years: '2023 —',
 		summary: 'Self-employed. Building web products end to end with TypeScript and React.'
 	},
 	{
 		company: 'RevoU',
 		title: 'Lecturer',
 		period: 'Jan 2023 — Present',
+		years: '2023 —',
 		summary: 'Part-time. Teaching JavaScript and web development to career-switchers.'
 	},
 	{
 		company: 'Cyan',
-		title: 'Full Stack Engineer',
+		title: 'Fullstack Software Engineer',
 		period: 'Jun 2022 — Jun 2023',
+		years: '2022–23',
 		summary:
-			"Maintained and shipped new features on Cyan's main site and built its Chrome extension. Buy now, pay later for NFTs."
+			"Web3 buy now, pay later and collateralized loans for NFTs and Metaverse assets. Maintained and built new features on Cyan's main website and developed its Chrome extension apps."
 	},
 	{
 		company: 'INDODAX',
 		title: 'Senior iOS Developer',
 		period: 'Nov 2021 — Jun 2022',
+		years: '2021–22',
 		summary:
-			"Rewrote Bitcoin.co.id's iOS app in Swift with MVVM-C, and maintained the wider iOS codebase."
+			"Rewrote the iOS app for Indonesia's largest crypto exchange on an MVVM-C architecture in 4 months — used by 3 million users."
 	},
 	{
 		company: 'Ajaib',
-		title: 'Senior iOS Developer',
+		title: 'Senior iOS Engineer',
 		period: 'Jan 2020 — Oct 2021',
+		years: '2020–21',
 		summary:
-			'Led the rewrite from React Native to native Swift/MVVM, then shipped Mutual Fund, Stock, and Community features. Code review and close work with product and UI/UX.'
+			'Y Combinator S18 brokerage. Rewrote the app from React Native to native Swift and MVVM in 3 months, then shipped Mutual Fund, Stock, and Community features — 1 million users by Sep 2021.'
 	},
 	{
 		company: 'HipCar',
-		title: 'Software Engineer',
+		title: 'Full-Stack Software Engineer',
 		period: 'Jan 2017 — Dec 2019',
+		years: '2017–19',
 		summary:
-			'Built Artemis (React.js mobile backend), the main and partner landing pages (Node.js, Vue.js), and the iOS app in Swift. Managed database and servers, and set up CI/CD with CircleCI.'
+			'Designed and built the iOS app, landing site, and back office for 300 vehicles, 30 employees, and 50k users. Planned product and timelines with the CEO and led 3 engineers.'
 	},
 	{
 		company: 'Bina Nusantara University',
 		title: 'System Analyst',
-		period: 'Jul 2014 — Jan 2017',
+		period: 'Jun 2014 — Dec 2016',
+		years: '2014–16',
 		summary:
-			'Progressed from Junior Programmer to System Analyst. Shipped Binus Online Learning 1.0 and 2.0, BinusMaya 2.0 and 5.0, binusian.org, and the Job Expo and paper repository sites.'
+			'Built a new Learning Management System for Binus Online Learning — 750+ students and 100+ lecturers — and extended legacy systems across business units.'
 	},
 	{
 		company: 'Bina Nusantara University',
 		title: 'Oracle Team',
 		period: 'Sep 2013 — Jun 2014',
+		years: '2013–14',
 		summary:
 			'ETL and data conversion from legacy systems, reporting, and custom pages on Oracle Campus Solution.'
 	}
 ];
 
-export const education = [
+// `device` picks the preview frame. To show a screenshot, drop it in static/work/
+// and set `image` to its path, e.g. '/work/ajaib.webp'.
+export type Project = {
+	slug: string;
+	name: string;
+	kind: string;
+	device: 'phone' | 'browser' | 'paper';
+	tint: string;
+	role: string;
+	period: string;
+	summary: string;
+	stats: { value: string; label: string }[];
+	points: string[];
+	stack: string[];
+	link: string;
+	linkLabel: string;
+	image: string;
+};
+
+export const projects: Project[] = [
 	{
-		school: 'Universitas Bina Nusantara (Binus)',
-		degree: 'Binus Graduate Program, Computer Science',
-		period: '2016 — 2018'
+		slug: 'ajaib',
+		name: 'Ajaib',
+		kind: 'iOS · Fintech · YC S18',
+		device: 'phone',
+		tint: '#1F4E8C',
+		role: 'Senior iOS Engineer',
+		period: 'Jan 2020 — Oct 2021',
+		summary: 'Online brokerage for Indonesians to buy and sell stocks, ETFs, and mutual funds.',
+		stats: [
+			{ value: '1M', label: 'users (Sep 2021)' },
+			{ value: '3 mo', label: 'native rewrite' }
+		],
+		points: [
+			'Rewrote the app from React Native to native Swift and MVVM in 3 months',
+			'Shipped the Mutual Fund, Stock, and Community features'
+		],
+		stack: ['Swift', 'MVVM', 'iOS'],
+		link: '',
+		linkLabel: '',
+		image: ''
 	},
 	{
-		school: 'Universitas Bina Nusantara (Binus)',
-		degree: 'BSc Computer Science',
-		period: '2012 — 2016'
+		slug: 'indodax',
+		name: 'INDODAX',
+		kind: 'iOS · Crypto',
+		device: 'phone',
+		tint: '#0F5E57',
+		role: 'Senior iOS Developer',
+		period: 'Nov 2021 — Jun 2022',
+		summary:
+			"Indonesia's largest crypto exchange — buy and sell bitcoin and other major cryptocurrencies.",
+		stats: [
+			{ value: '3M', label: 'users' },
+			{ value: '4 mo', label: 'full rewrite' }
+		],
+		points: ['Rewrote the iOS app on an MVVM-C architecture', 'Delivered the new app in 4 months'],
+		stack: ['Swift', 'MVVM-C', 'iOS'],
+		link: '',
+		linkLabel: '',
+		image: ''
+	},
+	{
+		slug: 'cyan',
+		name: 'Cyan',
+		kind: 'Web3 · NFT',
+		device: 'browser',
+		tint: '#1E6F86',
+		role: 'Fullstack Software Engineer',
+		period: 'Jun 2022 — Jun 2023',
+		summary: 'Buy now, pay later — or a collateralized loan — for NFTs and Metaverse assets.',
+		stats: [],
+		points: [
+			"Maintained and built new features on Cyan's main website",
+			'Developed the Chrome extension apps'
+		],
+		stack: ['TypeScript', 'React', 'Chrome Extension'],
+		link: '',
+		linkLabel: '',
+		image: ''
+	},
+	{
+		slug: 'hipcar',
+		name: 'HipCar',
+		kind: 'Mobility · Full stack',
+		device: 'browser',
+		tint: '#6B3FA0',
+		role: 'Full-Stack Software Engineer',
+		period: 'Jan 2017 — Dec 2019',
+		summary: 'On-demand car booking platform in Indonesia.',
+		stats: [
+			{ value: '50k', label: 'users' },
+			{ value: '300', label: 'vehicles' },
+			{ value: '3', label: 'engineers led' }
+		],
+		points: [
+			'Designed and built the iOS app, landing site, and back office',
+			'Planned product and timelines directly with the CEO'
+		],
+		stack: ['Swift', 'React', 'Node.js', 'CircleCI'],
+		link: '',
+		linkLabel: '',
+		image: ''
+	},
+	{
+		slug: 'binus',
+		name: 'Binus',
+		kind: 'EdTech · LMS',
+		device: 'browser',
+		tint: '#8A4B14',
+		role: 'System Analyst',
+		period: 'Jun 2014 — Dec 2016',
+		summary:
+			'A new Learning Management System for Binus Online Learning, undergraduate and master’s.',
+		stats: [
+			{ value: '750+', label: 'students' },
+			{ value: '100+', label: 'lecturers' }
+		],
+		points: [
+			'Designed the LMS with the academic, operations, and design teams',
+			'Supported and extended legacy systems across business units'
+		],
+		stack: ['SQL Server', 'Web'],
+		link: '',
+		linkLabel: '',
+		image: ''
+	},
+	{
+		slug: 'research',
+		name: 'Research',
+		kind: 'Published paper',
+		device: 'paper',
+		tint: '#3A3A3C',
+		role: 'Author',
+		period: 'IJEECS',
+		summary:
+			'Travel agent sentiment analysis — customer satisfaction across Traveloka, Tiket.com, and Agoda, measured from Facebook data.',
+		stats: [{ value: '3', label: 'models compared' }],
+		points: ['Compared KNN, Naïve Bayes, and SVM', 'Sentiment analysis on social media data'],
+		stack: ['Machine Learning', 'Research'],
+		link: 'https://ijeecs.iaescore.com/index.php/IJEECS',
+		linkLabel: 'Journal',
+		image: ''
+	}
+];
+
+export const skills = [
+	{ group: 'Languages', items: ['Swift', 'TypeScript', 'JavaScript', 'Go', 'HTML'] },
+	{ group: 'Frameworks', items: ['React', 'Node.js', 'SvelteKit', 'MVVM / MVVM-C'] },
+	{ group: 'Data', items: ['MySQL', 'SQL Server', 'Redis'] },
+	{ group: 'Tools', items: ['Git', 'CircleCI', 'Docker', 'Dokku', 'DigitalOcean', 'Cloudflare'] }
+];
+
+export const education = [
+	{
+		school: 'Bina Nusantara University',
+		degree: 'Master of Computer Science',
+		major: 'Information Engineering · GPA 3.72 / 4.0',
+		period: 'Mar 2016 — Mar 2018'
+	},
+	{
+		school: 'Bina Nusantara University',
+		degree: 'Bachelor of Computer Science',
+		major: 'Database Technology · GPA 4.0 / 4.0',
+		period: 'Sep 2012 — Feb 2016'
 	}
 ];
 
 export const awards = [
 	{ name: 'Best Graduate Award', detail: 'Summa Cum Laude · Bina Nusantara University, 2016' },
 	{ name: 'Binusian Award of Excellence', detail: 'Bina Nusantara University, 2016' }
-];
-
-export const projects = [
-	{
-		name: 'Ajaib iOS App',
-		summary:
-			'Native Swift rewrite of an Indonesian investment platform, plus mutual fund and stock trading features.',
-		stack: ['Swift', 'MVVM', 'iOS'],
-		demo: '',
-		repo: ''
-	},
-	{
-		name: 'Bitcoin.co.id (INDODAX)',
-		summary: "iOS app for Indonesia's largest digital asset exchange, rewritten with Swift and MVVM-C.",
-		stack: ['Swift', 'MVVM-C', 'iOS'],
-		demo: '',
-		repo: ''
-	},
-	{
-		name: 'Cyan',
-		summary: 'Buy now, pay later for NFTs — main web app and companion Chrome extension.',
-		stack: ['TypeScript', 'React', 'Chrome Extension'],
-		demo: '',
-		repo: ''
-	},
-	{
-		name: 'Travel Agent Sentiment Analysis',
-		summary:
-			'Published research measuring customer satisfaction across Traveloka, Tiket.com, and Agoda using KNN, Naïve Bayes, and SVM on Facebook data.',
-		stack: ['Machine Learning', 'Research'],
-		demo: 'https://ijeecs.iaescore.com/index.php/IJEECS',
-		repo: ''
-	}
-];
-
-export const skills = [
-	{ group: 'Languages', items: ['TypeScript', 'JavaScript', 'Swift'] },
-	{ group: 'Frameworks', items: ['React', 'SvelteKit', 'Node'] },
-	{ group: 'Mobile', items: ['iOS', 'MVVM', 'Xcode'] },
-	{ group: 'Tools', items: ['Git', 'Docker', 'Cloudflare'] }
 ];
