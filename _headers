@@ -1,0 +1,8 @@
+# Cloudflare Pages response headers (applies to prerendered pages and static files).
+# Only dhapoer.xyz should be indexed: keep the pages.dev copies (production alias,
+# the development preview and per-commit previews) out of search results.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
