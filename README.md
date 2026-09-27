@@ -13,6 +13,13 @@ The site is a dark "desktop OS": draggable windows (About, Work, Record, Contact
 - **Project screenshots:** put the image in `static/work/` and set that project's `image` in `data.ts` (e.g. `'/work/ajaib.webp'`). Without one, the phone/browser frame shows a placeholder.
 - **Deep links:** `#about`, `#record`, `#contact`, `#work`, `#work/<slug>` (e.g. `/#work/indodax`) open that window on load.
 
+## SEO
+
+- Search copy (title ≤ 60 chars, description ≤ 155), the production origin and the JSON-LD (`Person` / `ProfilePage`) live in [`src/lib/seo.ts`](src/lib/seo.ts); [`src/lib/Seo.svelte`](src/lib/Seo.svelte) renders the tags (canonical, Open Graph, Twitter).
+- `sitemap.xml` is generated from `pages` in `seo.ts` — add new routes there.
+- Every page is prerendered (`src/routes/+layout.ts`), so [`_headers`](_headers) applies: `*.pages.dev` copies are `noindex`; only dhapoer.xyz is indexed.
+- After deploying, submit `https://dhapoer.xyz/sitemap.xml` in Google Search Console.
+
 ## Develop
 
 ```sh

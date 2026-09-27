@@ -4,7 +4,8 @@
  -->
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { profile } from '$lib/data';
+	import Seo from '$lib/Seo.svelte';
+	import { home, homeLd } from '$lib/seo';
 	import { setDesktop } from '$lib/desktop/desktop.svelte';
 	import MenuBar from '$lib/desktop/MenuBar.svelte';
 	import Dock from '$lib/desktop/Dock.svelte';
@@ -42,13 +43,10 @@
 	onresize={() => desk.clamp(innerWidth, innerHeight)}
 />
 
+<Seo title={home.title} description={home.description} path="/" type="profile" jsonLd={homeLd()} />
+
 <svelte:head>
-	<title>{profile.name} — {profile.role}</title>
-	<meta name="description" content={profile.tagline} />
 	<meta name="theme-color" content="#0e0e10" />
-	<meta property="og:title" content={`${profile.name} — ${profile.role}`} />
-	<meta property="og:description" content={profile.tagline} />
-	<meta property="og:type" content="website" />
 </svelte:head>
 
 <MenuBar />
