@@ -10,7 +10,7 @@ All copy lives in one file: [`src/lib/data.ts`](src/lib/data.ts) — profile, bi
 
 The site is a dark "desktop OS": draggable windows (About, Work, Record, Contact), a Dock, and a folder per project. Under 900px wide each window opens as a full-screen sheet instead. The pieces live in [`src/lib/desktop/`](src/lib/desktop/); window state (open, position, stacking) is in `desktop.svelte.ts`.
 
-- **Project screenshots:** put the image in `static/work/` and set that project's `image` in `data.ts` (e.g. `'/work/ajaib.webp'`). Without one, the phone/browser frame shows a placeholder.
+- **Project screenshots:** put the image in `static/work/` and set that project's `image` in `data.ts` (e.g. `'/work/ajaib.webp'`). Without one, a phone frame shows the project's `logo` (e.g. `'/work/logos/ajaib.svg'`, from `static/work/logos/`) on a white launch screen, or its name if there's no logo; a browser frame shows a placeholder.
 - **Project pages:** every project in `data.ts` gets a prerendered page at `/work/<slug>` (e.g. `/work/indodax`) with its own title, description and structured data — set them in the project's `seo` field. Folders and the Work sidebar link there; old `/#work/<slug>` links still open the project. `/#record` and `/#contact` open those windows.
 
 ## SEO
