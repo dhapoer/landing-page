@@ -1,0 +1,12 @@
+// Cloudflare Pages settings for `wrangler pages deploy` (see .github/workflows/deploy.yml).
+// Once this file exists it is the source of truth for these settings; the
+// Pages dashboard shows them read-only.
+{
+	"name": "landing-page",
+	"pages_build_output_dir": ".svelte-kit/cloudflare",
+	// Production accepts any date up to today; this one is capped by the workerd
+	// that local `wrangler pages dev` ships with (supports up to 2026-06-24).
+	"compatibility_date": "2026-06-24",
+	// SvelteKit's server uses node:async_hooks when available (request context).
+	"compatibility_flags": ["nodejs_compat"]
+}
