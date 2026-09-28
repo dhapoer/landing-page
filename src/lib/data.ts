@@ -192,7 +192,7 @@ export const projects: Project[] = [
 		slug: 'hipcar',
 		name: 'HipCar',
 		kind: 'Mobility · Full stack',
-		device: 'browser',
+		device: 'phone',
 		tint: '#6B3FA0',
 		role: 'Full-Stack Software Engineer',
 		period: 'Jan 2017 — Dec 2019',
