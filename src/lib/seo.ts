@@ -1,4 +1,4 @@
-import { education, experience, profile, projects, skills, type Project } from '$lib/data';
+import { education, experience, profile, skills, type Project } from '$lib/data';
 
 // Production origin. Canonical URLs, Open Graph and the sitemap all point here,
 // so the pages.dev copies never compete with it.
@@ -11,9 +11,6 @@ export const home = {
 	description:
 		'Freelance full stack and iOS engineer in Bali. Shipped fintech and crypto apps used by millions at Ajaib and INDODAX. Swift, TypeScript, React.'
 };
-
-// Every indexable path. The sitemap is built from this list.
-export const pages = ['/', ...projects.map((p) => `/work/${p.slug}`)];
 
 export const absolute = (path: string) => new URL(path, SITE_URL).href;
 

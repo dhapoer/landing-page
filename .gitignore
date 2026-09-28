@@ -8,8 +8,9 @@ node_modules
 /.svelte-kit
 /build
 
-# Generated share cards (pnpm og, run by pnpm build)
+# Generated at build time (pnpm og, pnpm sitemap)
 /static/og
+/static/sitemap.xml
 
 # OS
 .DS_Store
