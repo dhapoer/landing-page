@@ -8,6 +8,10 @@ node_modules
 /.svelte-kit
 /build
 
+# Generated at build time (pnpm og, pnpm sitemap)
+/static/og
+/static/sitemap.xml
+
 # OS
 .DS_Store
 Thumbs.db

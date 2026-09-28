@@ -3,13 +3,11 @@
  * Portable token system. Import this before page styles.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
-
 :root {
 	color-scheme: dark;
 
-	/* Type — the Mac's own face where it exists, Geist elsewhere */
-	--font-sans: -apple-system, BlinkMacSystemFont, 'Geist', ui-sans-serif, system-ui, sans-serif;
+	/* Type — the Mac's own face where it exists, self-hosted Geist elsewhere (see +layout.svelte) */
+	--font-sans: -apple-system, BlinkMacSystemFont, 'Geist Sans', ui-sans-serif, system-ui, sans-serif;
 	--font-mono: 'Geist Mono', ui-monospace, 'SF Mono', monospace;
 
 	/* Colour */

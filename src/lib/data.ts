@@ -4,7 +4,7 @@ export const profile = {
 	name: 'Abimanyu Dharma Poernomo',
 	role: 'Full Stack Engineer',
 	tagline: 'Full stack and mobile engineer. Fintech, crypto, and the occasional lecture hall.',
-	location: 'Jakarta, Indonesia',
+	location: 'Bali, Indonesia',
 	email: 'hello@dhapoer.xyz',
 	availability: 'Available for freelance',
 	bio: [
@@ -101,6 +101,8 @@ export type Project = {
 	link: string;
 	linkLabel: string;
 	image: string;
+	/** Search result copy for /work/<slug>: title ≤ 60 chars, description ≤ 155. */
+	seo: { title: string; description: string };
 };
 
 export const projects: Project[] = [
@@ -124,7 +126,12 @@ export const projects: Project[] = [
 		stack: ['Swift', 'MVVM', 'iOS'],
 		link: '',
 		linkLabel: '',
-		image: ''
+		image: '',
+		seo: {
+			title: 'Ajaib iOS App: React Native to Native Swift Rewrite',
+			description:
+				"Rewrote Ajaib's stock and mutual fund trading app from React Native to native Swift in 3 months, reaching 1 million users. Senior iOS, 2020–2021."
+		}
 	},
 	{
 		slug: 'indodax',
@@ -144,7 +151,12 @@ export const projects: Project[] = [
 		stack: ['Swift', 'MVVM-C', 'iOS'],
 		link: '',
 		linkLabel: '',
-		image: ''
+		image: '',
+		seo: {
+			title: 'INDODAX iOS App Rewrite for 3M Crypto Traders',
+			description:
+				"Rewrote the iOS app for Indonesia's largest crypto exchange on MVVM-C in 4 months, used by 3 million people. Senior iOS Developer, 2021–2022."
+		}
 	},
 	{
 		slug: 'cyan',
@@ -163,7 +175,12 @@ export const projects: Project[] = [
 		stack: ['TypeScript', 'React', 'Chrome Extension'],
 		link: '',
 		linkLabel: '',
-		image: ''
+		image: '',
+		seo: {
+			title: 'Cyan: Web3 Buy Now, Pay Later for NFTs',
+			description:
+				'Full stack work on Cyan, a Web3 platform for buy now, pay later and collateralized loans on NFTs: main web app and Chrome extension, 2022–2023.'
+		}
 	},
 	{
 		slug: 'hipcar',
@@ -186,7 +203,12 @@ export const projects: Project[] = [
 		stack: ['Swift', 'React', 'Node.js', 'CircleCI'],
 		link: '',
 		linkLabel: '',
-		image: ''
+		image: '',
+		seo: {
+			title: 'HipCar: Car Booking App, Website and Back Office',
+			description:
+				"Built HipCar's iOS app, landing site and back office for 300 vehicles and 50k users, and led 3 engineers. Full-stack engineer, 2017–2019."
+		}
 	},
 	{
 		slug: 'binus',
@@ -209,7 +231,12 @@ export const projects: Project[] = [
 		stack: ['SQL Server', 'Web'],
 		link: '',
 		linkLabel: '',
-		image: ''
+		image: '',
+		seo: {
+			title: 'Binus Online Learning LMS for 750+ Students',
+			description:
+				'Designed and built a Learning Management System for Binus Online Learning, serving 750+ students and 100+ lecturers. System Analyst, 2014–2016.'
+		}
 	},
 	{
 		slug: 'research',
@@ -226,7 +253,12 @@ export const projects: Project[] = [
 		stack: ['Machine Learning', 'Research'],
 		link: 'https://ijeecs.iaescore.com/index.php/IJEECS',
 		linkLabel: 'Journal',
-		image: ''
+		image: '',
+		seo: {
+			title: 'Travel Agent Sentiment Analysis (IJEECS Paper)',
+			description:
+				'Published research comparing KNN, Naïve Bayes and SVM to measure customer satisfaction with Traveloka, Tiket.com and Agoda from Facebook data.'
+		}
 	}
 ];
 
