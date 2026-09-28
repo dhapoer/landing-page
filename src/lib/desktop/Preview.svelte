@@ -21,7 +21,7 @@
 	{:else if project.device === 'browser'}
 		<div class="browser">
 			<div class="chrome"><span></span><span></span><span></span></div>
-			<div class="page" style="background:{project.tint}">
+			<div class="page" class:shot={project.image} style="background:{project.tint}">
 				{#if project.image}
 					<img src={project.image} alt="{project.name} website screenshot" loading="lazy" />
 				{:else}
@@ -93,6 +93,9 @@
 	.chrome { display: flex; gap: 5px; padding: 8px 10px; border-bottom: 1px solid var(--color-hair); }
 	.chrome span { width: 7px; height: 7px; border-radius: 999px; background: var(--color-inactive); }
 	.page { height: 170px; }
+	/* A real screenshot keeps its own proportions instead of being cropped. */
+	.page.shot { height: auto; }
+	.page.shot img { height: auto; }
 
 	.paper {
 		width: 170px;

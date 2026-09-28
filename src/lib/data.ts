@@ -238,7 +238,7 @@ export const projects: Project[] = [
 		stack: ['SQL Server', 'Web'],
 		link: '',
 		linkLabel: '',
-		image: '',
+		image: '/work/binus.webp',
 		logo: '',
 		seo: {
 			title: 'Binus Online Learning LMS for 750+ Students',
