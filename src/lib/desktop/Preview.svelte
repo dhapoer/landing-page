@@ -11,6 +11,8 @@
 			<div class="screen">
 				{#if project.image}
 					<img src={project.image} alt="{project.name} app screenshot" loading="lazy" />
+				{:else if project.logo && project.logoBadge}
+					<span class="badge"><img class="logo" src={project.logo} alt="{project.name} logo" loading="lazy" /></span>
 				{:else if project.logo}
 					<img class="logo" src={project.logo} alt="{project.name} logo" loading="lazy" />
 				{:else}
@@ -81,6 +83,14 @@
 		max-height: 56px;
 		object-fit: contain;
 	}
+	.badge {
+		display: flex;
+		max-width: 80%;
+		padding: 10px 14px;
+		border-radius: 14px;
+		background: #fff;
+	}
+	.badge .logo { max-width: 100%; max-height: 40px; }
 
 	.browser {
 		width: 100%;
