@@ -4,6 +4,13 @@
 	import Desktop from '$lib/desktop/Desktop.svelte';
 </script>
 
-<Seo title={home.title} description={home.description} path="/" type="profile" jsonLd={homeLd()} />
+<Seo
+	title={home.title}
+	description={home.description}
+	path="/"
+	type="profile"
+	image={{ path: '/og/home.png', alt: 'About window: “I build software people trade real money on.”' }}
+	jsonLd={homeLd()}
+/>
 
 <Desktop />
