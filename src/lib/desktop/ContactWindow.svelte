@@ -1,9 +1,19 @@
 <script lang="ts">
 	import { profile } from '$lib/data';
 	import Window from './Window.svelte';
+
+	// About's default right edge (its left + width in AboutWindow.svelte).
+	const aboutRight = '(clamp(24px, 6vw, 96px) + min(720px, 50vw))';
 </script>
 
-<Window id="contact" title="Contact" width="min(460px, 40vw)" left="calc(100vw - min(460px, 40vw) - 170px)" top="calc(var(--menubar-h) + 7vh)">
+<!-- Opens beside About: starts 24px right of it and shrinks before it reaches the folders. -->
+<Window
+	id="contact"
+	title="Contact"
+	width="min(420px, calc(100vw - {aboutRight} - 24px - 150px))"
+	left="calc({aboutRight} + 24px)"
+	top="calc(var(--menubar-h) + 5vh)"
+>
 	<div class="contact">
 		<p class="head">Want something built well?</p>
 		<p class="muted">{profile.availability} — web, mobile, or both.</p>
