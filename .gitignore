@@ -8,6 +8,9 @@ node_modules
 /.svelte-kit
 /build
 
+# Generated share cards (pnpm og, run by pnpm build)
+/static/og
+
 # OS
 .DS_Store
 Thumbs.db

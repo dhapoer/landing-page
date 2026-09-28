@@ -13,6 +13,7 @@
 	description={p.seo.description}
 	path="/work/{p.slug}"
 	type="article"
+	image={{ path: `/og/work-${p.slug}.png`, alt: `${p.name}: ${p.summary}` }}
 	jsonLd={projectLd(p)}
 />
 
