@@ -180,7 +180,7 @@ export const projects: Project[] = [
 		stack: ['TypeScript', 'React', 'Chrome Extension'],
 		link: '',
 		linkLabel: '',
-		image: '',
+		image: '/work/cyan.webp',
 		logo: '',
 		seo: {
 			title: 'Cyan: Web3 Buy Now, Pay Later for NFTs',
