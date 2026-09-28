@@ -85,7 +85,8 @@ export const experience = [
 ];
 
 // `device` picks the preview frame. To show a screenshot, drop it in static/work/
-// and set `image` to its path, e.g. '/work/ajaib.webp'.
+// and set `image` to its path, e.g. '/work/ajaib.webp'. Without a screenshot, a
+// phone shows `logo` (e.g. '/work/logos/ajaib.png') on a black launch screen.
 export type Project = {
 	slug: string;
 	name: string;
@@ -101,6 +102,8 @@ export type Project = {
 	link: string;
 	linkLabel: string;
 	image: string;
+	/** Company logo for the phone launch screen; must read on black. */
+	logo: string;
 	/** Search result copy for /work/<slug>: title ≤ 60 chars, description ≤ 155. */
 	seo: { title: string; description: string };
 };
@@ -127,6 +130,7 @@ export const projects: Project[] = [
 		link: '',
 		linkLabel: '',
 		image: '',
+		logo: '/work/logos/ajaib.svg',
 		seo: {
 			title: 'Ajaib iOS App: React Native to Native Swift Rewrite',
 			description:
@@ -152,6 +156,7 @@ export const projects: Project[] = [
 		link: '',
 		linkLabel: '',
 		image: '',
+		logo: '',
 		seo: {
 			title: 'INDODAX iOS App Rewrite for 3M Crypto Traders',
 			description:
@@ -176,6 +181,7 @@ export const projects: Project[] = [
 		link: '',
 		linkLabel: '',
 		image: '',
+		logo: '',
 		seo: {
 			title: 'Cyan: Web3 Buy Now, Pay Later for NFTs',
 			description:
@@ -204,6 +210,7 @@ export const projects: Project[] = [
 		link: '',
 		linkLabel: '',
 		image: '',
+		logo: '',
 		seo: {
 			title: 'HipCar: Car Booking App, Website and Back Office',
 			description:
@@ -232,6 +239,7 @@ export const projects: Project[] = [
 		link: '',
 		linkLabel: '',
 		image: '',
+		logo: '',
 		seo: {
 			title: 'Binus Online Learning LMS for 750+ Students',
 			description:
@@ -254,6 +262,7 @@ export const projects: Project[] = [
 		link: 'https://ijeecs.iaescore.com/index.php/IJEECS',
 		linkLabel: 'Journal',
 		image: '',
+		logo: '',
 		seo: {
 			title: 'Travel Agent Sentiment Analysis (IJEECS Paper)',
 			description:

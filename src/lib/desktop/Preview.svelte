@@ -4,14 +4,17 @@
 	let { project }: { project: Project } = $props();
 </script>
 
-<div class="stage" aria-hidden={project.image ? undefined : 'true'}>
+<div class="stage" aria-hidden={project.image || project.logo ? undefined : 'true'}>
 	{#if project.device === 'phone'}
 		<div class="phone">
-			<div class="screen" style="background:{project.tint}">
+			<!-- Black launch screen: the app's logo, or its name until a logo is added. -->
+			<div class="screen">
 				{#if project.image}
 					<img src={project.image} alt="{project.name} app screenshot" loading="lazy" />
+				{:else if project.logo}
+					<img class="logo" src={project.logo} alt="{project.name} logo" loading="lazy" />
 				{:else}
-					<span class="name">{project.name}</span><span>Screenshot coming soon</span>
+					<span class="name">{project.name}</span>
 				{/if}
 			</div>
 		</div>
@@ -70,7 +73,14 @@
 		text-align: center;
 		color: rgb(255 255 255 / 0.9);
 	}
-	.screen { border-radius: 23px; }
+	.screen { border-radius: 23px; background: #000; }
+	.screen .logo {
+		width: auto;
+		height: auto;
+		max-width: 72%;
+		max-height: 56px;
+		object-fit: contain;
+	}
 
 	.browser {
 		width: 100%;
