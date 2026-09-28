@@ -156,7 +156,7 @@ export const projects: Project[] = [
 		link: '',
 		linkLabel: '',
 		image: '',
-		logo: '',
+		logo: '/work/logos/indodax.png',
 		seo: {
 			title: 'INDODAX iOS App Rewrite for 3M Crypto Traders',
 			description:
