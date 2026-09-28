@@ -86,7 +86,7 @@ export const experience = [
 
 // `device` picks the preview frame. To show a screenshot, drop it in static/work/
 // and set `image` to its path, e.g. '/work/ajaib.webp'. Without a screenshot, a
-// phone shows `logo` (e.g. '/work/logos/ajaib.png') on a black launch screen.
+// phone shows `logo` (e.g. '/work/logos/ajaib.png') on a white launch screen.
 export type Project = {
 	slug: string;
 	name: string;
@@ -102,10 +102,8 @@ export type Project = {
 	link: string;
 	linkLabel: string;
 	image: string;
-	/** Company logo for the phone launch screen; must read on black. */
+	/** Company logo for the phone launch screen (white background). */
 	logo: string;
-	/** Logo has a solid light background: show it on a white rounded badge. */
-	logoBadge?: boolean;
 	/** Search result copy for /work/<slug>: title ≤ 60 chars, description ≤ 155. */
 	seo: { title: string; description: string };
 };
@@ -213,7 +211,6 @@ export const projects: Project[] = [
 		linkLabel: '',
 		image: '',
 		logo: '/work/logos/hipcar.png',
-		logoBadge: true,
 		seo: {
 			title: 'HipCar: Car Booking App, Website and Back Office',
 			description:

@@ -7,12 +7,10 @@
 <div class="stage" aria-hidden={project.image || project.logo ? undefined : 'true'}>
 	{#if project.device === 'phone'}
 		<div class="phone">
-			<!-- Black launch screen: the app's logo, or its name until a logo is added. -->
+			<!-- White launch screen: the app's logo, or its name until a logo is added. -->
 			<div class="screen">
 				{#if project.image}
 					<img src={project.image} alt="{project.name} app screenshot" loading="lazy" />
-				{:else if project.logo && project.logoBadge}
-					<span class="badge"><img class="logo" src={project.logo} alt="{project.name} logo" loading="lazy" /></span>
 				{:else if project.logo}
 					<img class="logo" src={project.logo} alt="{project.name} logo" loading="lazy" />
 				{:else}
@@ -75,7 +73,7 @@
 		text-align: center;
 		color: rgb(255 255 255 / 0.9);
 	}
-	.screen { border-radius: 23px; background: #000; }
+	.screen { border-radius: 23px; background: #fff; color: #1c1c1e; }
 	.screen .logo {
 		width: auto;
 		height: auto;
@@ -83,14 +81,6 @@
 		max-height: 56px;
 		object-fit: contain;
 	}
-	.badge {
-		display: flex;
-		max-width: 80%;
-		padding: 10px 14px;
-		border-radius: 14px;
-		background: #fff;
-	}
-	.badge .logo { max-width: 100%; max-height: 40px; }
 
 	.browser {
 		width: 100%;
