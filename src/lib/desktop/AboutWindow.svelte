@@ -8,7 +8,7 @@
 	const heading = desk.page === 'home' ? 'h1' : 'p';
 </script>
 
-<Window id="about" title="About" width="min(760px, 56vw)" left="clamp(24px, 6vw, 96px)" top="calc(var(--menubar-h) + 5vh)">
+<Window id="about" title="About" width="min(720px, 50vw)" left="clamp(24px, 6vw, 96px)" top="calc(var(--menubar-h) + 5vh)">
 	<div class="about">
 		<p class="kicker">{profile.name} · {profile.role}</p>
 		<svelte:element this={heading} class="headline">
