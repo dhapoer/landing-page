@@ -81,6 +81,7 @@ Setup is complete; the notes below are for rebuilding from scratch.
 ## Notes
 
 - **Adapter config lives in [`vite.config.ts`](vite.config.ts)**, not `svelte.config.js`. Adding a `svelte.config.js` is ignored and logs a warning.
+- **Cloudflare runtime settings live in [`wrangler.jsonc`](wrangler.jsonc)** (compatibility date, `nodejs_compat`). With it in the repo, the Pages dashboard shows these settings read-only — change them in the file.
 - **Email is auto-obfuscated.** Cloudflare rewrites `mailto:` to `/cdn-cgi/l/email-protection`; it renders normally in a browser but looks scrambled in `curl`.
 - **`Profile.pdf` is gitignored** — the LinkedIn resume export contains a phone number.
 - Escape closes the front window.
