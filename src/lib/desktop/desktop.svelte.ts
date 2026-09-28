@@ -11,11 +11,12 @@ export const SHEET_QUERY = '(max-width: 899px)';
 export class Desktop {
 	/** 'project' on /work/<slug>: the project's name is the page heading. */
 	page: 'home' | 'project' = 'home';
-	open = $state<Record<WinId, boolean>>({ about: true, work: false, record: true, contact: false });
+	// Home opens on the pitch (About) with the way to reach out (Contact) beside it.
+	open = $state<Record<WinId, boolean>>({ about: true, work: false, record: false, contact: true });
 	// null = still at its CSS default spot; set once the window is dragged.
 	pos = $state<Record<WinId, Pos | null>>({ about: null, work: null, record: null, contact: null });
 	// Open windows, back to front.
-	order = $state<WinId[]>(['record', 'about']);
+	order = $state<WinId[]>(['contact', 'about']);
 	project = $state(0);
 	// A window asks for keyboard focus after the user opens it.
 	focusRequest = $state<WinId | null>(null);
@@ -26,7 +27,8 @@ export class Desktop {
 		if (project === undefined) return;
 		this.page = 'project';
 		this.project = project;
-		this.open.work = true;
+		// Project pages: the project in front, About and Record behind it.
+		this.open = { about: true, work: true, record: true, contact: false };
 		this.order = ['record', 'about', 'work'];
 	}
 
