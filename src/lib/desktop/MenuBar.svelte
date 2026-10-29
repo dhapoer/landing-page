@@ -1,4 +1,5 @@
 <script lang="ts">
+	import mark from '$lib/assets/favicon.svg';
 	import { profile } from '$lib/data';
 	import { getDesktop, WIN_IDS } from './desktop.svelte';
 
@@ -8,7 +9,7 @@
 
 <header class="menubar">
 	<nav aria-label="Primary">
-		<span class="brand">Dhapoer</span>
+		<span class="brand"><img src={mark} alt="" width="16" height="16" />Dhapoer</span>
 		{#each WIN_IDS as id (id)}
 			<button class="item" onclick={() => desk.show(id)}>{labels[id]}</button>
 		{/each}
@@ -36,7 +37,7 @@
 		font-size: var(--text-sm);
 	}
 	nav { display: flex; align-items: center; gap: 2px; }
-	.brand { padding: 0 10px; font-weight: 700; }
+	.brand { display: flex; align-items: center; gap: 6px; padding: 0 10px; font-weight: 700; }
 	.item {
 		height: 24px;
 		padding: 0 10px;
